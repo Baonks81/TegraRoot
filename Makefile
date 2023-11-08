@@ -62,7 +62,7 @@ kernel-tegra30.gz: src/linux-tegra30
 	@echo "MAKE  $@"
 	@mkdir -p build/linux-tegra30
 	@mkdir -p dtbs/tegra30
-	@$(MAKE) -C src/linux-tegra30 O=../../build/linux-tegra30 $(CROSS_FLAGS) transformer_defconfig
+	@$(MAKE) -C src/linux-tegra30 O=../../build/linux-tegra30 $(CROSS_FLAGS) transformer_defconfig # @$(MAKE) -C src/linux-tegra30 O=../../build/linux-tegra30 $(CROSS_FLAGS) grate_defconfig pmos.config
 	@$(MAKE) -C src/linux-tegra30 O=../../build/linux-tegra30 $(CROSS_FLAGS) -j $(nproc)
 	@cp build/linux-tegra30/arch/arm/boot/zImage $@
 	@cp build/linux-tegra30/arch/arm/boot/dts/tegra30-{asus-nexus7-grouper-*,asus-nexus7-tilapia-*}.dtb dtbs/tegra30/
@@ -76,7 +76,7 @@ dtbs/tegra30/tegra30-asus-nexus7-tilapia-E1565.dtb: kernel-tegra30.gz
 src/linux-tegra30:
 	@echo "Clone linux-tegra30"
 	@mkdir src/linux-tegra30
-	@git clone https://github.com/clamor-s/linux.git --depth=1 src/linux-tegra30	
+	@git clone https://github.com/clamor-s/linux.git --depth=1 src/linux-tegra30	# @git clone https://github.com/grate-driver/linux.git --depth=1 src/linux-tegra30
 
 src/busybox:
 	@echo "WGET  busybox"
